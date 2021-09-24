@@ -1,0 +1,29 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="Public domain"
+
+[[mods]]
+modId="moreobservers"
+version="1.0"
+displayName="More Observers"
+#updateJSONURL=""
+displayURL="https://www.curseforge.com/minecraft/mc-mods/more-observers"
+#logoFile="logo.png"
+#credits=""
+authors="StephenBarnes"
+description='''
+Adds observers for crop age, distance, maybe more in future.'''
+
+[[dependencies.moreobservers]]
+    modId="forge"
+    mandatory=true
+    versionRange="[36.2.0,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.moreobservers]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5,1.17)"
+    ordering="NONE"
+    side="BOTH"
