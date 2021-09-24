@@ -1,6 +1,6 @@
 {
   "block.moreobservers.discerner": "Discerner",
   "tile.moreobservers.discerner": "Discerner",
-  "block.moreobservers.flipflop_observer": "Flipflop Observer",
-  "tile.moreobservers.flipflop_observer": "Flipflop Observer"
+  "block.moreobservers.toggle_observer": "Toggle Observer",
+  "tile.moreobservers.toggle_observer": "Toggle Observer"
 }
