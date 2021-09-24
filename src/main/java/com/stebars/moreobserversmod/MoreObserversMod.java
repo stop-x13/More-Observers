@@ -1,6 +1,7 @@
 package com.stebars.moreobserversmod;
 
 import com.stebars.moreobserversmod.blocks.DiscernerBlock;
+import com.stebars.moreobserversmod.blocks.FlipFlopObserverBlock;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
@@ -23,6 +24,11 @@ public class MoreObserversMod {
 	public static final Item DISCERNER_ITEM = new BlockItem(DISCERNER_BLOCK,
 			new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(new ResourceLocation(MOD_ID, "discerner"));
 
+	public static final Block FLIPFLOP_OBSERVER_BLOCK = new FlipFlopObserverBlock()
+			.setRegistryName(new ResourceLocation(MOD_ID, "flipflop_observer"));
+	public static final Item FLIPFLOP_OBSERVER_ITEM = new BlockItem(FLIPFLOP_OBSERVER_BLOCK,
+			new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(new ResourceLocation(MOD_ID, "flipflop_observer"));
+	
 
 	public MoreObserversMod() {
 		MinecraftForge.EVENT_BUS.register(this);
@@ -31,11 +37,13 @@ public class MoreObserversMod {
 	@SubscribeEvent
 	public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
 		event.getRegistry().registerAll(DISCERNER_BLOCK);
+		event.getRegistry().registerAll(FLIPFLOP_OBSERVER_BLOCK);
 	}
 
 	@SubscribeEvent
 	public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
 		event.getRegistry().registerAll(DISCERNER_ITEM);
+		event.getRegistry().registerAll(FLIPFLOP_OBSERVER_ITEM);
 	}
 	
 	// TODO: observer variant that functions as a T-flip-flop, ie detects pulses, outputs constant
