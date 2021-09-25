@@ -16,13 +16,14 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
 
 public class MobserverBlock extends ObserverBlock {
 
-	public static final int FREQUENCY_TICKS = 40;
+	public static final int FREQUENCY_TICKS = 20;
 	// How frequently to re-check for mobs
 
 	public static final int FORWARD_RANGE = 5;
@@ -32,7 +33,7 @@ public class MobserverBlock extends ObserverBlock {
 	// How far out the detection zone extends in each direction from forward direction
 	// Actual bounding box has side length SIDE_RANGE * 2 + 1
 
-	
+
 	public MobserverBlock() {
 		super(Block.Properties.copy(Blocks.OBSERVER));
 	}
@@ -53,6 +54,7 @@ public class MobserverBlock extends ObserverBlock {
 
 		if (poweredOld != poweredNew) {
 			BlockState updatedState = state.setValue(POWERED, Boolean.valueOf(poweredNew));
+			Blocks.REDSTONE_WIRE.asItem();
 			world.setBlock(pos, updatedState, 2);
 			this.updateNeighborsInFront(world, pos, state);	
 		}
@@ -68,11 +70,11 @@ public class MobserverBlock extends ObserverBlock {
 				this.updateNeighborsInFront(world, pos, blockstate);
 			}
 		}
-		
+
 		// Schedule update tick to get initial value
 		world.getBlockTicks().scheduleTick(pos, this, 2);
 	}
-	
+
 	public AxisAlignedBB getZone(BlockState state, BlockPos pos) {
 		// We recompute the zone on every update. Could do it faster by caching on block placement, but would
 		// need to make tile entity (or they'd all share the same zone), I think
@@ -99,5 +101,17 @@ public class MobserverBlock extends ObserverBlock {
 			return new Pair<Direction, Direction>(Direction.NORTH, Direction.UP);
 		else //if (dir == Direction.NORTH || dir == Direction.SOUTH)
 			return new Pair<Direction, Direction>(Direction.UP, Direction.WEST);
+	}
+
+	@Override
+	public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
+		return state.getValue(POWERED) ? 8 : super.getLightValue(state, world, pos);
+	}
+
+	@Override
+	public int getSignal(BlockState p_180656_1_, IBlockReader p_180656_2_, BlockPos p_180656_3_, Direction dir) {
+		// Send both forward and backward
+		Direction facing = p_180656_1_.getValue(FACING);
+		return p_180656_1_.getValue(POWERED) && (facing == dir || facing.getOpposite() == dir) ? 15 : 0;
 	}
 }

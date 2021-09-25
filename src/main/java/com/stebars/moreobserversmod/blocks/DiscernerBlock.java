@@ -98,8 +98,9 @@ public class DiscernerBlock extends ObserverBlock {
 		else
 			outputSignal = 5 + (seen0to11 / 2); // intermediate values: output in range 5-10
 
-		BlockState updatedState = state.setValue(POWER, Integer.valueOf(outputSignal));
-		updatedState = updatedState.setValue(POWERED, Boolean.valueOf(outputSignal > 0));
+		BlockState updatedState = state
+				.setValue(POWER, Integer.valueOf(outputSignal))
+				.setValue(POWERED, Boolean.valueOf(outputSignal > 0));
 		world.setBlock(pos, updatedState, 2);
 
 		this.updateNeighborsInFront(world, pos, state);

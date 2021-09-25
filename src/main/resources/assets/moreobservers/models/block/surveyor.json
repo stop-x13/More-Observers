@@ -1,11 +1,11 @@
 {
     "parent": "block/block",
     "textures": {
-        "bottom": "moreobservers:block/discerner/discerner_back",
-        "side": "moreobservers:block/discerner/discerner_side",
-        "top": "moreobservers:block/discerner/discerner_top",
-        "front": "moreobservers:block/discerner/discerner_front",
-        "particle": "moreobservers:block/discerner/discerner_front"
+        "bottom": "moreobservers:block/surveyor/surveyor_back",
+        "side": "moreobservers:block/surveyor/surveyor_side",
+        "top": "moreobservers:block/surveyor/surveyor_top",
+        "front": "moreobservers:block/surveyor/surveyor_front",
+        "particle": "moreobservers:block/surveyor/surveyor_front"
     },
     "elements": [
         {   "from": [ 0, 0, 0 ],

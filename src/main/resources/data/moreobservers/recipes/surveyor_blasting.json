@@ -2,7 +2,7 @@
   "type": "minecraft:blasting",
   "ingredient": [
     {
-      "item": "moreobservers:mobserver"
+      "item": "moreobservers:surveyor"
     }
   ],
   "result": "minecraft:lapis_lazuli",

@@ -1,6 +1,7 @@
 package com.stebars.moreobserversmod;
 
 import com.stebars.moreobserversmod.blocks.DiscernerBlock;
+import com.stebars.moreobserversmod.blocks.SurveyorBlock;
 import com.stebars.moreobserversmod.blocks.MobserverBlock;
 import com.stebars.moreobserversmod.blocks.ToggleObserverBlock;
 
@@ -35,6 +36,11 @@ public class MoreObserversMod {
 	public static final Item MOBSERVER_ITEM = new BlockItem(MOBSERVER_BLOCK,
 			new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(new ResourceLocation(MOD_ID, "mobserver"));
 
+	public static final Block SURVEYOR_BLOCK = new SurveyorBlock()
+			.setRegistryName(new ResourceLocation(MOD_ID, "surveyor"));
+	public static final Item SURVEYOR_ITEM = new BlockItem(SURVEYOR_BLOCK,
+			new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(new ResourceLocation(MOD_ID, "surveyor"));
+
 
 	public MoreObserversMod() {
 		MinecraftForge.EVENT_BUS.register(this);
@@ -45,6 +51,7 @@ public class MoreObserversMod {
 		event.getRegistry().registerAll(DISCERNER_BLOCK);
 		event.getRegistry().registerAll(TOGGLE_OBSERVER_BLOCK);
 		event.getRegistry().registerAll(MOBSERVER_BLOCK);
+		event.getRegistry().registerAll(SURVEYOR_BLOCK);
 	}
 
 	@SubscribeEvent
@@ -52,7 +59,6 @@ public class MoreObserversMod {
 		event.getRegistry().registerAll(DISCERNER_ITEM);
 		event.getRegistry().registerAll(TOGGLE_OBSERVER_ITEM);
 		event.getRegistry().registerAll(MOBSERVER_ITEM);
-	}
-	
-	// TODO: observer variant that detects distance to first solid block
+		event.getRegistry().registerAll(SURVEYOR_ITEM);
+	}	
 }

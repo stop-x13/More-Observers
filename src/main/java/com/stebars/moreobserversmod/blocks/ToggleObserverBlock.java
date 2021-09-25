@@ -11,6 +11,7 @@ import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -82,4 +83,11 @@ public class ToggleObserverBlock extends ObserverBlock {
 		}
 	}
 
+	@Override
+	public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
+		return state.getValue(POWERED) ? 10 : super.getLightValue(state, world, pos);
+	}
+	
+	// Don't want to send signal in other directions, e.g. forward (because the nose), because that would make it harder to detect
+	// redstone signal changes from e.g. buttons.
 }
