@@ -1,6 +1,7 @@
 package com.stebars.moreobserversmod;
 
 import com.stebars.moreobserversmod.blocks.DiscernerBlock;
+import com.stebars.moreobserversmod.blocks.MobserverBlock;
 import com.stebars.moreobserversmod.blocks.ToggleObserverBlock;
 
 import net.minecraft.block.Block;
@@ -28,7 +29,12 @@ public class MoreObserversMod {
 			.setRegistryName(new ResourceLocation(MOD_ID, "toggle_observer"));
 	public static final Item TOGGLE_OBSERVER_ITEM = new BlockItem(TOGGLE_OBSERVER_BLOCK,
 			new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(new ResourceLocation(MOD_ID, "toggle_observer"));
-	
+
+	public static final Block MOBSERVER_BLOCK = new MobserverBlock()
+			.setRegistryName(new ResourceLocation(MOD_ID, "mobserver"));
+	public static final Item MOBSERVER_ITEM = new BlockItem(MOBSERVER_BLOCK,
+			new Item.Properties().tab(ItemGroup.TAB_REDSTONE)).setRegistryName(new ResourceLocation(MOD_ID, "mobserver"));
+
 
 	public MoreObserversMod() {
 		MinecraftForge.EVENT_BUS.register(this);
@@ -38,15 +44,15 @@ public class MoreObserversMod {
 	public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
 		event.getRegistry().registerAll(DISCERNER_BLOCK);
 		event.getRegistry().registerAll(TOGGLE_OBSERVER_BLOCK);
+		event.getRegistry().registerAll(MOBSERVER_BLOCK);
 	}
 
 	@SubscribeEvent
 	public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
 		event.getRegistry().registerAll(DISCERNER_ITEM);
 		event.getRegistry().registerAll(TOGGLE_OBSERVER_ITEM);
+		event.getRegistry().registerAll(MOBSERVER_ITEM);
 	}
 	
-	// TODO: observer variant that detects mobs in region (see Create Irrigation lava code). Will let you detect through walls
 	// TODO: observer variant that detects distance to first solid block
-	// TODO: observer that pulses for any changes in the 5-long line it's looking at (would need block entity to store it, I think?)
 }

@@ -2,5 +2,7 @@
   "block.moreobservers.discerner": "Discerner",
   "tile.moreobservers.discerner": "Discerner",
   "block.moreobservers.toggle_observer": "Toggle Observer",
-  "tile.moreobservers.toggle_observer": "Toggle Observer"
+  "tile.moreobservers.toggle_observer": "Toggle Observer",
+  "block.moreobservers.mobserver": "Mobserver",
+  "tile.moreobservers.mobserver": "Mobserver"
 }
