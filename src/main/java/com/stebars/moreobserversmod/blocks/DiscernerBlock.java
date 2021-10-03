@@ -50,7 +50,7 @@ public class DiscernerBlock extends ObserverBlock {
 			new IntegerPropertyDetails(BlockStateProperties.STAGE, 1), // bamboo and sapling stage
 			new IntegerPropertyDetails(BlockStateProperties.LEVEL_CAULDRON, 3),
 			new IntegerPropertyDetails(BlockStateProperties.LEVEL_COMPOSTER, 8),
-			new IntegerPropertyDetails(BlockStateProperties.LEVEL, 15), // level of flowing fluid
+			new IntegerPropertyDetails(BlockStateProperties.LEVEL, 8), // level of flowing fluid; actual max is 15, but only goes up to 7 for flowing blocks
 			//new IntegerPropertyDetails(BlockStateProperties.LEVEL_FLOWING, 8, 1),
 			new IntegerPropertyDetails(BlockStateProperties.MOISTURE, 7),
 			new IntegerPropertyDetails(BlockStateProperties.BITES, 6), // cake bites

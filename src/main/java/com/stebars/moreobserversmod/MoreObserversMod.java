@@ -48,17 +48,11 @@ public class MoreObserversMod {
 
 	@SubscribeEvent
 	public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
-		event.getRegistry().registerAll(DISCERNER_BLOCK);
-		event.getRegistry().registerAll(TOGGLE_OBSERVER_BLOCK);
-		event.getRegistry().registerAll(MOBSERVER_BLOCK);
-		event.getRegistry().registerAll(SURVEYOR_BLOCK);
+		event.getRegistry().registerAll(DISCERNER_BLOCK, TOGGLE_OBSERVER_BLOCK, MOBSERVER_BLOCK, SURVEYOR_BLOCK);
 	}
 
 	@SubscribeEvent
 	public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
-		event.getRegistry().registerAll(DISCERNER_ITEM);
-		event.getRegistry().registerAll(TOGGLE_OBSERVER_ITEM);
-		event.getRegistry().registerAll(MOBSERVER_ITEM);
-		event.getRegistry().registerAll(SURVEYOR_ITEM);
+		event.getRegistry().registerAll(DISCERNER_ITEM, TOGGLE_OBSERVER_ITEM, MOBSERVER_ITEM, SURVEYOR_ITEM);
 	}	
 }

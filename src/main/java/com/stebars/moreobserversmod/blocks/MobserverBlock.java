@@ -105,7 +105,7 @@ public class MobserverBlock extends ObserverBlock {
 
 	@Override
 	public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
-		return state.getValue(POWERED) ? 8 : super.getLightValue(state, world, pos);
+		return state.getValue(POWERED) ? 10 : super.getLightValue(state, world, pos);
 	}
 
 	@Override

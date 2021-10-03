@@ -88,7 +88,7 @@ public class SurveyorBlock extends ObserverBlock {
 		// Schedule update tick to get initial value
 		world.getBlockTicks().scheduleTick(pos, this, 2);
 	}
-	
+
 
 	@Override
 	public int getSignal(BlockState state, IBlockReader reader, BlockPos pos, Direction direction) {
