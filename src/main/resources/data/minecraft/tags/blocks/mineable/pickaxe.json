@@ -1,0 +1,9 @@
+{
+	"replace": false,
+	"values": [
+		"moreobservers:discerner",
+        "moreobservers:mob_observer",
+        "moreobservers:surveyor",
+        "moreobservers:toggle_observer"
+	]
+}

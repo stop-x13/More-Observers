@@ -1,17 +1,17 @@
-package com.stebars.moreobserversmod.utils;
+package com.stebars.moreobservers.utils;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.state.IntegerProperty;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 public class IntegerPropertyDetails {
 	public IntegerProperty property;
 	public int max;
 	public int min = 0;
 
-	public IntegerPropertyDetails(IntegerProperty property, int max, int min) {
+	public IntegerPropertyDetails(IntegerProperty property, int min, int max) {
 		this.property = property;
-		this.max = max;
 		this.min = min;
+		this.max = max;
 	}
 
 	public IntegerPropertyDetails(IntegerProperty property, int max) {

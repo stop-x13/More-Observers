@@ -1,10 +1,8 @@
 {
   "block.moreobservers.discerner": "Discerner",
-  "tile.moreobservers.discerner": "Discerner",
   "block.moreobservers.toggle_observer": "Toggle Observer",
-  "tile.moreobservers.toggle_observer": "Toggle Observer",
-  "block.moreobservers.mobserver": "Mobserver",
-  "tile.moreobservers.mobserver": "Mobserver",
+  "block.moreobservers.mob_observer": "Mob Observer",
   "block.moreobservers.surveyor": "Surveyor",
-  "tile.moreobservers.surveyor": "Surveyor"
+
+  "itemGroup.moreobservers": "More Observers"
 }

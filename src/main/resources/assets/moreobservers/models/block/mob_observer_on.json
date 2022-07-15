@@ -1,0 +1,7 @@
+{
+    "parent": "moreobservers:block/mob_observer",
+    "textures": {
+        "bottom": "moreobservers:block/mob_observer/mob_observer_back_on",
+        "front": "moreobservers:block/mob_observer/mob_observer_front_on"
+    }
+}

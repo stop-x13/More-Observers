@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "moreobservers:mobserver"
+          "name": "moreobservers:mob_observer"
         }
       ],
       "conditions": [

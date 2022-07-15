@@ -1,6 +1,6 @@
 modLoader="javafml"
-loaderVersion="[36,)"
-license="Public domain"
+loaderVersion="[40,)"
+license="GNU Lisence"
 
 [[mods]]
 modId="moreobservers"
@@ -17,13 +17,13 @@ Adds observers for crop age, distance, maybe more in future.'''
 [[dependencies.moreobservers]]
     modId="forge"
     mandatory=true
-    versionRange="[36.2.0,)"
+    versionRange="[40,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.moreobservers]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.5,1.17)"
+    versionRange="[1.18.2,1.19)"
     ordering="NONE"
     side="BOTH"

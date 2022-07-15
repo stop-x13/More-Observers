@@ -1,13 +1,6 @@
-package com.stebars.moreobserversmod;
+package com.stebars.moreobservers;
 
-import java.util.List;
-
-import org.apache.commons.lang3.tuple.Pair;
-
-import com.google.common.collect.Lists;
-
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
+// TODO
 
 /* Keeping here, though I don't have config options for now. Also re-enable in main file.
 public class OptionsHolder {

@@ -1,0 +1,8 @@
+{
+    "block.moreobservers.discerner": "识别器",
+    "block.moreobservers.toggle_observer": "切换侦测器",
+    "block.moreobservers.mob_observer": "生物侦测器",
+    "block.moreobservers.surveyor": "距离侦测器",
+  
+    "itemGroup.moreobservers": "更多侦测器"
+}
