@@ -11,7 +11,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(MoreObservers.MOD_ID)
 public class MoreObservers {
 	public static final String MOD_ID = "moreobservers";
-
+	
 	public MoreObservers() {
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 

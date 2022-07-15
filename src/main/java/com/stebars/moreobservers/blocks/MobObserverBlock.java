@@ -22,7 +22,7 @@ import net.minecraft.world.phys.AABB;
 public class MobObserverBlock extends ObserverBlock {
 	
 	// How frequently to re-check for mobs
-	public static final int FREQUENCY_TICKS = 20;
+	public static final int FREQUENCY_TICKS = 2;
 	
 	// How far forward the detection range extends
 	public static final int FORWARD_RANGE = 5;
@@ -40,7 +40,8 @@ public class MobObserverBlock extends ObserverBlock {
 
 	@Override
 	public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
-		List<LivingEntity> mobs = level.getEntitiesOfClass(LivingEntity.class, getZone(state, pos));
+		AABB boundingBox = getZone(state, pos);
+		List<LivingEntity> mobs = level.getEntitiesOfClass(LivingEntity.class, boundingBox);
 
 		boolean poweredOld = state.getValue(POWERED);
 		boolean poweredNew = !mobs.isEmpty();
@@ -49,8 +50,11 @@ public class MobObserverBlock extends ObserverBlock {
 			BlockState updatedState = state.setValue(POWERED, Boolean.valueOf(poweredNew));
 			Blocks.REDSTONE_WIRE.asItem();
 			level.setBlock(pos, updatedState, 2);
-			this.updateNeighborsInFront(level, pos, state);	
+			this.updateNeighborsInFront(level, pos, state);
+			
 		}
+		
+		
 		level.scheduleTick(pos, this, FREQUENCY_TICKS); // Schedule next check
 	}
 
@@ -73,20 +77,38 @@ public class MobObserverBlock extends ObserverBlock {
 		// need to make tile entity (or they'd all share the same zone), I think
 		Direction facing = state.getValue(FACING);
 		Pair<Direction, Direction> normalDirs = getPerpendicularDirections(facing);
-		BlockPos farPos = pos.relative(facing, FORWARD_RANGE);
-		BlockPos bound1 = farPos.relative(normalDirs.getFirst(), SIDE_RANGE).relative(normalDirs.getSecond(), SIDE_RANGE);
-		BlockPos bound2 = pos.relative(normalDirs.getFirst(), -SIDE_RANGE).relative(normalDirs.getSecond(), -SIDE_RANGE);
-
-		return new AABB(bound1, bound2);
+		
+		// Calculate the grid bounding box
+		if(isPosDir(facing)) {
+			BlockPos farPos = pos.relative(facing, FORWARD_RANGE + 1);
+			BlockPos nearPos = pos.relative(facing, 1);
+			BlockPos bound1 = farPos.relative(normalDirs.getFirst(), SIDE_RANGE + 1).relative(normalDirs.getSecond(), SIDE_RANGE + 1);
+			BlockPos bound2 = nearPos.relative(normalDirs.getFirst(), -SIDE_RANGE).relative(normalDirs.getSecond(), -SIDE_RANGE);
+			return new AABB(bound1, bound2);
+		}
+		else {
+			BlockPos farPos = pos.relative(facing, FORWARD_RANGE);
+			BlockPos nearPos = pos;
+			BlockPos bound1 = farPos.relative(normalDirs.getFirst(), SIDE_RANGE + 1).relative(normalDirs.getSecond(), SIDE_RANGE + 1);
+			BlockPos bound2 = nearPos.relative(normalDirs.getFirst(), -SIDE_RANGE).relative(normalDirs.getSecond(), -SIDE_RANGE);
+			return new AABB(bound1, bound2);
+		}
 	}
-
-	public Pair<Direction, Direction> getPerpendicularDirections(Direction dir) {
+	
+	// helper
+	private static boolean isPosDir(Direction dir) {
+		return dir == Direction.EAST || dir == Direction.SOUTH || dir == Direction.UP;
+	}
+	
+	
+	// First is positive and second is negative
+	private static Pair<Direction, Direction> getPerpendicularDirections(Direction dir) {
 		if (dir == Direction.DOWN || dir == Direction.UP)
-			return new Pair<Direction, Direction>(Direction.EAST, Direction.NORTH);
+			return new Pair<Direction, Direction>(Direction.EAST, Direction.SOUTH);
 		else if (dir == Direction.WEST || dir == Direction.EAST)
-			return new Pair<Direction, Direction>(Direction.NORTH, Direction.UP);
-		else
-			return new Pair<Direction, Direction>(Direction.UP, Direction.WEST);
+			return new Pair<Direction, Direction>(Direction.UP, Direction.SOUTH);
+		else // NORTH or SOUTH
+			return new Pair<Direction, Direction>(Direction.UP, Direction.EAST);
 	}
 
 	@Override
