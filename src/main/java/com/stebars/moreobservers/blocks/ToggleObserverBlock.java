@@ -23,7 +23,7 @@ public class ToggleObserverBlock extends ObserverBlock {
 	// "Triggered" holds the value the vanilla observer would have, i.e. it pulses for 2 ticks when observed state changes
 	// Then we flip the value of "powered" whenever "triggered" goes high.
 
-	public static final int IMMUNITY_TICKS = 20;
+	public static final int IMMUNITY_TICKS = 2;
 	// After changing powered state, waits this number of ticks before being able to change again
 
 	public ToggleObserverBlock(Properties properties) {
