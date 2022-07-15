@@ -20,7 +20,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 public class SurveyorBlock extends ObserverBlock {
 
-	public static final int FREQUENCY_TICKS = 20;
+	public static final int FREQUENCY_TICKS = 2;
 	// How frequently to re-check
 
 	public static final int FORWARD_RANGE = 15;
